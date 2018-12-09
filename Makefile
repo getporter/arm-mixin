@@ -1,5 +1,6 @@
 MIXIN = azure
 PKG = github.com/deislabs/porter-$(MIXIN)
+SHELL = bash
 
 COMMIT ?= $(shell git rev-parse --short HEAD)
 VERSION ?= $(shell git describe --tags --dirty='+dev' 2> /dev/null || echo v0)
