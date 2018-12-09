@@ -13,14 +13,18 @@
         },
         "api": {
             "type": "string"
-        }
+        },
+        "tags": {
+			"type": "object"
+		}
     },
     "variables": {},
     "resources": [
         {
             "apiVersion": "2015-04-08",
-            "kind": "MongoDB",
+            "kind": "[parameters('api')]",
             "type": "Microsoft.DocumentDb/databaseAccounts",
+            "tags": "[parameters('tags')]",
             "name": "[parameters('name')]",
             "location": "[parameters('location')]",
             "properties": {
@@ -45,11 +49,11 @@
     "outputs": {
 		"HOST": {
 			"type": "string",
-			"value": "[reference('{{ .name }}').documentEndpoint]"
+			"value": "[reference(parameters('name')).documentEndpoint]"
 		},
 		"primary_key":{
 			"type": "string",
-			"value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', '{{ .name }}'), '2015-04-08').primaryMasterKey]"
+			"value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('name')), '2015-04-08').primaryMasterKey]"
 		}
 	}
 }
