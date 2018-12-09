@@ -71,15 +71,10 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:ae4968b509fb726320c67e44a18749e7bdb747eac56aad9642ea06a28fdf5a7c"
+  digest = "1:ecd1ef683d827bf54ddd25cfd4bf9c153c79f1e2df35205b2db591f569ec89d2"
   name = "github.com/deislabs/porter"
   packages = [
-    "pkg",
     "pkg/context",
-    "pkg/mixin/azure",
-    "pkg/mixin/azure/arm",
-    "pkg/mixin/azure/arm/packrd",
-    "pkg/mixin/azure/auth",
     "pkg/test",
   ]
   pruneopts = "NUT"
@@ -421,12 +416,7 @@
     "github.com/Azure/go-autorest/autorest/adal",
     "github.com/Azure/go-autorest/autorest/azure",
     "github.com/Masterminds/sprig",
-    "github.com/deislabs/porter/pkg",
     "github.com/deislabs/porter/pkg/context",
-    "github.com/deislabs/porter/pkg/mixin/azure",
-    "github.com/deislabs/porter/pkg/mixin/azure/arm",
-    "github.com/deislabs/porter/pkg/mixin/azure/arm/packrd",
-    "github.com/deislabs/porter/pkg/mixin/azure/auth",
     "github.com/gobuffalo/packr/v2",
     "github.com/gobuffalo/packr/v2/file/resolver",
     "github.com/kelseyhightower/envconfig",
