@@ -2,7 +2,7 @@ MIXIN = azure
 PKG = github.com/deislabs/porter-$(MIXIN)
 
 COMMIT ?= $(shell git rev-parse --short HEAD)
-VERSION ?= $(shell git describe --tags --dirty='+dev' --abbrev=0 2> /dev/null || echo v0)
+VERSION ?= $(shell git describe --tags --dirty='+dev' 2> /dev/null || echo v0)
 PERMALINK ?= $(shell git name-rev --name-only --tags --no-undefined HEAD &> /dev/null && echo latest || echo canary)
 
 LDFLAGS = -w -X $(PKG)/pkg.Version=$(VERSION) -X $(PKG)/pkg.Commit=$(COMMIT)
@@ -56,7 +56,9 @@ test-unit: build
 
 publish:
 	# AZURE_STORAGE_CONNECTION_STRING will be used for auth in the following commands
-	az storage blob upload-batch -d porter/mixins/$(MIXIN)/$(VERSION) -s $(BINDIR)/$(VERSION)
+	if [[ "$(PERMALINK)" == "latest" ]]; then \
+	az storage blob upload-batch -d porter/mixins/$(MIXIN)/$(VERSION) -s $(BINDIR)/$(VERSION); \
+	fi
 	az storage blob upload-batch -d porter/mixins/$(MIXIN)/$(PERMALINK) -s $(BINDIR)/$(VERSION)
 
 clean:
