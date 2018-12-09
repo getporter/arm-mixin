@@ -6,7 +6,6 @@ import (
 	"os"
 
 	"github.com/deislabs/porter-azure/pkg/azure"
-
 	"github.com/spf13/cobra"
 )
 
