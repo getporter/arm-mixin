@@ -27,15 +27,19 @@ type AzureOutput struct {
 
 // New azure mixin client, initialized with useful defaults.
 func New() (*Mixin, error) {
-	cfg, err := GetConfigFromEnvironment()
-	if err != nil {
-		return nil, err
-	}
 	return &Mixin{
 		Context: context.New(),
-		cfg:     cfg,
 	}, nil
 
+}
+
+func (m *Mixin)LoadConfigFromEnvironment() error {
+	cfg, err := GetConfigFromEnvironment()
+	if err != nil {
+		return err
+	}
+	m.cfg = cfg
+	return nil
 }
 
 func (m *Mixin) getPayloadData() ([]byte, error) {
