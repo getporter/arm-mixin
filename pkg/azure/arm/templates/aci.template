@@ -45,6 +45,13 @@
 		},
         "tags": {
 			"type": "object"
+		},
+		"environmentVariables" : {
+			"type" : "array",
+			"defaultValue" : {
+				"key" : "",
+				"value" : ""
+			}
 		}
 	},
 	"variables": {
@@ -58,7 +65,8 @@
 		"dnsLabel": "[parameters('dnsLabel')]",
 		"port": "[int(parameters('port'))]",
 		"commands": "[if(equals(parameters('commands'), 'none'), take(createArray(''), 0), split(parameters('commands'), ', '))]",
-		"restartPolicy": "[parameters('restartPolicy')]"
+		"restartPolicy": "[parameters('restartPolicy')]",
+		"params": "[length(parameters('environmentVariables'))]"
 	},
 	"resources": [{
 		"name": "[variables('name')]",
@@ -71,6 +79,14 @@
 				"name": "[variables('name')]",
 				"properties": {
 					"image": "[variables('image')]",
+					"copy" : [{
+						"name": "environmentVariables",
+						"count" : "[variables('params')]",
+						"input" : {
+							"name": "[parameters('environmentVariables')[copyIndex('environmentVariables')].key]",
+							"value": "[parameters('environmentVariables')[copyIndex('environmentVariables')].value]"
+						}
+					}],
 					"command": "[variables('commands')]",
 					"ports": [{
 						"protocol": "TCP",
