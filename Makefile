@@ -51,6 +51,7 @@ $(BINDIR)/$(VERSION)/$(MIXIN)-$(CLIENT_PLATFORM)-$(CLIENT_ARCH)$(FILE_EXT):
 	GOOS=$(CLIENT_PLATFORM) GOARCH=$(CLIENT_ARCH) $(XBUILD) -o $@ ./cmd/$(MIXIN)
 
 test: test-unit
+	$(BINDIR)/$(MIXIN)$(FILE_EXT) version
 
 test-unit: build
 	go test ./...
