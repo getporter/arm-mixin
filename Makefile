@@ -37,12 +37,7 @@ build-client:
 	mkdir -p $(BINDIR)
 	go build -ldflags '$(LDFLAGS)' -o $(BINDIR)/$(MIXIN)$(FILE_EXT) ./cmd/$(MIXIN)
 
-HAS_PACKR2 := $(shell command -v packr2)
-
-build-templates:
-ifndef HAS_PACKR2
-	go get -u github.com/gobuffalo/packr/packr
-endif
+build-templates: get-deps
 	cd pkg/azure/arm && packr2 build
 
 xbuild-all: xbuild-runtime $(addprefix xbuild-for-,$(SUPPORTED_CLIENT_PLATFORMS))
@@ -64,16 +59,22 @@ test: test-unit test-templates
 test-unit: build
 	go test ./...
 
-HAS_JSONPP := $(shell command -v jsonpp)
-
-test-templates:
-ifndef HAS_JSONPP
-	go get github.com/jmhodges/jsonpp
-endif
+test-templates: get-deps
 	@for template in $$(ls pkg/azure/arm/templates); do \
 		echo "ensuring valid json: $$template" ; \
 		cat pkg/azure/arm/templates/$$template | json_pp > /dev/null ; \
 	done
+
+HAS_JSONPP := $(shell command -v jsonpp)
+HAS_PACKR2 := $(shell command -v packr2)
+
+get-deps:
+ifndef HAS_JSONPP
+	go get -u github.com/jmhodges/jsonpp
+endif
+ifndef HAS_PACKR2
+	go get -u github.com/gobuffalo/packr/v2/packr2
+endif
 
 publish:
 	# AZURE_STORAGE_CONNECTION_STRING will be used for auth in the following commands
