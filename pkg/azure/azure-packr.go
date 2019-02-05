@@ -2,6 +2,6 @@
 
 // You can use the "packr clean" command to clean up this,
 // and any other packr generated files.
-package arm
+package azure
 
 import _ "github.com/deislabs/porter-azure/pkg/azure/packrd"

@@ -1,0 +1,17 @@
+{
+  "install": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "template": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": true
+  }
+}

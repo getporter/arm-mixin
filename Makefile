@@ -27,18 +27,18 @@ endif
 
 REGISTRY ?= $(USER)
 
-build: build-client build-runtime build-templates
+build: build-client build-runtime
 
 build-runtime:
 	mkdir -p $(BINDIR)
 	GOARCH=$(RUNTIME_ARCH) GOOS=$(RUNTIME_PLATFORM) go build -ldflags '$(LDFLAGS)' -o $(BINDIR)/$(MIXIN)-runtime$(FILE_EXT) ./cmd/$(MIXIN)
 
-build-client:
+build-client: build-templates
 	mkdir -p $(BINDIR)
 	go build -ldflags '$(LDFLAGS)' -o $(BINDIR)/$(MIXIN)$(FILE_EXT) ./cmd/$(MIXIN)
 
 build-templates: get-deps
-	cd pkg/azure/arm && packr2 build
+	cd pkg/azure && packr2 build
 
 xbuild-all: xbuild-runtime $(addprefix xbuild-for-,$(SUPPORTED_CLIENT_PLATFORMS))
 
