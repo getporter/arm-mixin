@@ -7,9 +7,9 @@ import (
 
 	resourcesSDK "github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2017-05-10/resources"
 
-	"github.com/deislabs/porter/pkg/context"
 	"github.com/deislabs/porter-azure/pkg/azure/arm"
 	"github.com/deislabs/porter-azure/pkg/azure/auth"
+	"github.com/deislabs/porter/pkg/context"
 
 	"github.com/pkg/errors"
 )
@@ -20,11 +20,6 @@ type Mixin struct {
 	//also add the azure clients here
 }
 
-type AzureOutput struct {
-	Name string `yaml:"name"`
-	Key  string `yaml:"key"`
-}
-
 // New azure mixin client, initialized with useful defaults.
 func New() (*Mixin, error) {
 	return &Mixin{
@@ -33,7 +28,7 @@ func New() (*Mixin, error) {
 
 }
 
-func (m *Mixin)LoadConfigFromEnvironment() error {
+func (m *Mixin) LoadConfigFromEnvironment() error {
 	cfg, err := GetConfigFromEnvironment()
 	if err != nil {
 		return err
