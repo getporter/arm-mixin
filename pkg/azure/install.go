@@ -2,17 +2,18 @@ package azure
 
 import (
 	"fmt"
-	"gopkg.in/yaml.v2"
 	"strings"
+
+	yaml "gopkg.in/yaml.v2"
 )
 
 type InstallStep struct {
-	Description string           `yaml:"description"`
-	Outputs     []AzureOutput    `yaml:"outputs"`
-	Arguments   InstallArguments `yaml:"azure"`
+	InstallArguments `yaml:"azure"`
 }
 
 type InstallArguments struct {
+	Step `yaml:",inline"`
+
 	Type          string                 `yaml:"type"`
 	Template      string                 `yaml:"template"`
 	Name          string                 `yaml:"name"`
@@ -30,25 +31,25 @@ func (m *Mixin) Install() error {
 	if err != nil {
 		return err
 	}
-	args := step.Arguments
+
 	// Get the arm deployer
 	deployer, err := m.getARMDeployer()
 	if err != nil {
 		return err
 	}
 	// Get the Template based on the arguments (type)
-	t, err := deployer.FindTemplate(args.Type, args.Template)
+	t, err := deployer.FindTemplate(step.Type, step.Template)
 	if err != nil {
 		return err
 	}
 	fmt.Fprintln(m.Out, "Starting deployment operations...")
 	// call Deployer.Deploy(...)
 	outputs, err := deployer.Deploy(
-		args.Name,
-		args.ResourceGroup,
-		args.Parameters["location"].(string),
+		step.Name,
+		step.ResourceGroup,
+		step.Parameters["location"].(string),
 		t,
-		args.Parameters, //arm params
+		step.Parameters, //arm params
 		nil,             //Tags not supported right now
 	)
 	if err != nil {

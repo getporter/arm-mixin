@@ -1,0 +1,11 @@
+azure:
+  description: "Create Azure MySQL"
+  type: mysql
+  name: mysql-azure-porter-demo
+  resourceGroup: "porter-test"
+  parameters:
+    location: "eastus"
+    serverName: "myserver"
+  outputs:
+    - name: "MYSQL_HOST"
+      key: "MYSQL_HOST"
