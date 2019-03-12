@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "installStep": {
+      "type": "object",
+      "properties": {
+        "azure": {
+          "type": "object",
+          "properties": {
+            "description": {
+              "$ref": "#/definitions/stepDescription"
+            },
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "template": {
+              "type": "string"
+            },
+            "resourceGroup": {
+              "type": "string"
+            },
+            "parameters": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "description",
+            "type",
+            "template"
+          ]
+        }
+      },
+      "required": [
+        "azure"
+      ],
+      "additionalProperties": false
+    },
+    "upgradeStep": {
+      "$ref": "#/definitions/unimplementedStep"
+    },
+    "uninstallStep": {
+      "$ref": "#/definitions/unimplementedStep"
+    },
+    "unimplementedStep": {
+      "type": "object",
+      "properties": {
+        "azure": {
+          "type": "object",
+          "properties": {
+            "description": {
+              "$ref": "#/definitions/stepDescription"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "description"
+          ]
+        }
+      },
+      "required": [
+        "azure"
+      ]
+    },
+    "stepDescription": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "type": "object",
+  "properties": {
+    "install": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/installStep"
+      }
+    },
+    "upgrade": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/upgradeStep"
+      }
+    },
+    "uninstall": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/uninstallStep"
+      }
+    }
+  },
+  "additionalProperties": false
+}
