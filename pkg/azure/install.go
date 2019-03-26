@@ -4,8 +4,13 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/pkg/errors"
 	yaml "gopkg.in/yaml.v2"
 )
+
+type InstallAction struct {
+	Steps []InstallStep `yaml:"install"`
+}
 
 type InstallStep struct {
 	InstallArguments `yaml:"azure"`
@@ -26,11 +31,16 @@ func (m *Mixin) Install() error {
 	if err != nil {
 		return err
 	}
-	var step InstallStep
-	err = yaml.Unmarshal(payload, &step)
+
+	var action InstallAction
+	err = yaml.Unmarshal(payload, &action)
 	if err != nil {
 		return err
 	}
+	if len(action.Steps) != 1 {
+		return errors.Errorf("expected a single step, but got %d", len(action.Steps))
+	}
+	step := action.Steps[0]
 
 	// Get the arm deployer
 	deployer, err := m.getARMDeployer()
