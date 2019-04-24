@@ -84,7 +84,7 @@ publish: bin/porter$(FILE_EXT)
 		az storage blob upload-batch -d porter/mixins/$(MIXIN)/$(VERSION) -s $(BINDIR)/$(VERSION); \
 		az storage blob download -c porter -n atom.xml -f bin/atom.xml; \
 		bin/porter mixins feed generate -d bin/mixins -f bin/atom.xml -t build/atom-template.xml; \
-		az storage blob upload -c porter -n atom.xml -f bin/atom.xml; \		
+		az storage blob upload -c porter -n atom.xml -f bin/atom.xml; \
 	fi
 	az storage blob upload-batch -d porter/mixins/$(MIXIN)/$(PERMALINK) -s $(BINDIR)/$(VERSION)
 
