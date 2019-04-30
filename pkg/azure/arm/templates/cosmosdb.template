@@ -2,6 +2,9 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "capabilities":{
+            "type": "string"
+        },
         "name": {
             "type": "string"
         },
@@ -39,7 +42,8 @@
                 "enableMultipleWriteLocations": true,
                 "isVirtualNetworkFilterEnabled": false,
                 "virtualNetworkRules": [],
-                "dependsOn": []
+                "dependsOn": [],
+                "capabilities":"[parameters('capabilities')]"
             },
             "tags": {
                 "defaultExperience": "[parameters('api')]"
@@ -54,6 +58,10 @@
 		"primary_key":{
 			"type": "string",
 			"value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('name')), '2015-04-08').primaryMasterKey]"
+		},
+        "connection_string":{
+			"type": "string",
+			"value": "[listConnectionStrings(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('name')), '2015-04-08').connectionString]"
 		}
 	}
 }
