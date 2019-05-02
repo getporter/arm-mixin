@@ -50,6 +50,9 @@
             "metadata": {
                 "description": "Conditional to enable api specific capabilities if MongoDB is the API chosen."
             }
+        },
+        "tags": {
+            "type": "object"
         }
     },
     "variables": {},
@@ -57,6 +60,7 @@
         {
             "apiVersion": "[parameters('apiVersion')]",
             "kind": "[parameters('kind')]",
+            "tags": "[parameters('tags')]",
             "type": "Microsoft.DocumentDB/databaseAccounts",
             "name": "[parameters('name')]",
             "location": "[parameters('location')]",
