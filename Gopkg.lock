@@ -71,14 +71,14 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:ecd1ef683d827bf54ddd25cfd4bf9c153c79f1e2df35205b2db591f569ec89d2"
+  digest = "1:9d12b7590ad4a39a29b55bde07abaa6eb2bfdddfb6b91b6018f57a1d8f388eda"
   name = "github.com/deislabs/porter"
   packages = [
     "pkg/context",
     "pkg/test",
   ]
   pruneopts = "NUT"
-  revision = "cff67e3666bd0c01c363bbc47df5e9a7f30d58e9"
+  revision = "51221b2438ae7490880982840cc5003a16b8243e"
 
 [[projects]]
   digest = "1:7a6852b35eb5bbc184561443762d225116ae630c26a7c4d90546619f1e7d2ad2"
