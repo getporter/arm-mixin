@@ -73,16 +73,17 @@ func (m *Mixin) Install() error {
 		outputs[newKey] = v
 	}
 
-	var lines []string
 	for _, output := range step.Outputs {
 		// ToUpper the key because of the case weirdness with ARM outputs
 		v, ok := outputs[strings.ToUpper(output.Key)]
 		if !ok {
 			return fmt.Errorf("couldn't find output key")
 		}
-		l := fmt.Sprintf("%s=%v", output.Name, v)
-		lines = append(lines, l)
+
+		err := m.Context.WriteMixinOutputToFile(output.Name, []byte(fmt.Sprintf("%v", v)))
+		if err != nil {
+			return errors.Wrapf(err, "unable to write output '%s'", output.Name)
+		}
 	}
-	m.Context.WriteOutput(lines)
 	return nil
 }
