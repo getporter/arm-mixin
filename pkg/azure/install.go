@@ -60,7 +60,6 @@ func (m *Mixin) Install() error {
 		step.Parameters["location"].(string),
 		t,
 		step.Parameters, //arm params
-		nil,             //Tags not supported right now
 	)
 	if err != nil {
 		return err

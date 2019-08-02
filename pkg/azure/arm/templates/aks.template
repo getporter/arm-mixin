@@ -76,9 +76,6 @@
             "metadata": {
                 "description": "The version of Kubernetes."
             }
-        },
-        "tags": {
-            "type": "object"
         }
     },
     "resources": [
@@ -87,7 +84,6 @@
             "type": "Microsoft.ContainerService/managedClusters",
             "location": "[parameters('location')]",
             "name": "[parameters('clusterName')]",
-            "tags": "[parameters('tags')]",
             "properties": {
                 "kubernetesVersion": "[parameters('kubernetesVersion')]",
                 "dnsPrefix": "[parameters('dnsPrefix')]",

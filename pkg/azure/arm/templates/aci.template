@@ -43,9 +43,6 @@
             "defaultValue" : "OnFailure",
 			"type": "String"
 		},
-        "tags": {
-			"type": "object"
-		},
 		"environmentVariables" : {
 			"type" : "array",
 			"defaultValue" : {
@@ -71,7 +68,6 @@
 	"resources": [{
 		"name": "[variables('name')]",
 		"type": "Microsoft.ContainerInstance/containerGroups",
-        "tags": "[parameters('tags')]",
 		"apiVersion": "[variables('APIversion')]",
 		"location": "[variables('location')]",
 		"properties": {
