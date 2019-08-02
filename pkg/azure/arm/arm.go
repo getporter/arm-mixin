@@ -34,7 +34,6 @@ type Deployer interface {
 		location string,
 		template []byte,
 		armParams map[string]interface{},
-		tags map[string]string,
 	) (map[string]interface{}, error)
 	Update(
 		deploymentName string,
@@ -42,7 +41,6 @@ type Deployer interface {
 		location string,
 		template []byte,
 		armParams map[string]interface{},
-		tags map[string]string,
 	) (map[string]interface{}, error)
 	Delete(deploymentName string, resourceGroupName string) error
 }
@@ -76,7 +74,6 @@ func (d *deployer) Deploy(
 	location string,
 	template []byte,
 	armParams map[string]interface{},
-	tags map[string]string,
 ) (map[string]interface{}, error) {
 
 	// Get the deployment and its current status
@@ -105,7 +102,6 @@ func (d *deployer) Deploy(
 			location,
 			template,
 			armParams,
-			tags,
 		); err != nil {
 			return nil, fmt.Errorf(
 				`error deploying "%s" in resource group "%s": %s`,
@@ -165,7 +161,6 @@ func (d *deployer) Update(
 	location string,
 	template []byte,
 	armParams map[string]interface{},
-	tags map[string]string,
 ) (map[string]interface{}, error) {
 	// Get the deployment's current status
 	_, ds, err := d.getDeploymentAndStatus(
@@ -223,7 +218,6 @@ func (d *deployer) Update(
 			location,
 			template,
 			armParams,
-			tags,
 		)
 		if err != nil {
 			return nil, fmt.Errorf(
@@ -329,7 +323,6 @@ func (d *deployer) doDeployment(
 	location string,
 	armTemplate []byte,
 	armParams map[string]interface{},
-	tags map[string]string,
 ) (*resourcesSDK.DeploymentExtended, error) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -363,21 +356,10 @@ func (d *deployer) doDeployment(
 		return nil, fmt.Errorf("error unmarshaling ARM template: %s", err)
 	}
 
-	// Deal with the possibility that tags == nil
-	if tags == nil {
-		tags = make(map[string]string)
-	}
-
-	// Augment the provided tags with heritage information
-	tags["heritage"] = "porter-azure-mixin"
-
 	// Deal with the possiiblity that params == nil
 	if armParams == nil {
 		armParams = make(map[string]interface{})
 	}
-
-	// Augment the params with tags
-	armParams["tags"] = tags
 
 	// Convert a simple map[string]interface{} to the more complex
 	// map[string]map[string]interface{} required by the deployments client

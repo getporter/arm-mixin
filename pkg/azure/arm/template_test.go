@@ -30,10 +30,7 @@ const mysqlTemplate = `{
         },
         "sslEnforcement": {
             "type": "string"
-        },
-		"tags": {
-			"type": "object"
-		}
+        }
     },
     "resources": [
         {
@@ -41,7 +38,6 @@ const mysqlTemplate = `{
             "kind": "",
             "location": "[parameters('location')]",
             "name": "[parameters('serverName')]",
-			"tags": "[parameters('tags')]",
             "properties": {
                 "version": "[parameters('version')]",
                 "administratorLogin": "[parameters('administratorLogin')]",

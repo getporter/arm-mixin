@@ -19,7 +19,7 @@ func GetTemplate(kind string) ([]byte, error) {
 
 func (d deployer) FindTemplate(kind, template string) ([]byte, error) {
 	if kind == "arm" {
-		template := fmt.Sprintf("/cnab/arm/templates/%s", template)
+		template := fmt.Sprintf("/cnab/app/%s", template)
 		f, err := d.context.FileSystem.Open(template)
 		if err != nil {
 			return nil, errors.Wrap(err, fmt.Sprintf("couldn't find template %s", template))
