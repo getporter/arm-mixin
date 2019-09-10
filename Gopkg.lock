@@ -70,15 +70,18 @@
   version = "v1.1.1"
 
 [[projects]]
-  branch = "master"
-  digest = "1:9d12b7590ad4a39a29b55bde07abaa6eb2bfdddfb6b91b6018f57a1d8f388eda"
+  digest = "1:5dbeee38ba124d233693f4d3b0e74fbb6df785bbff42c22bc1b44fb1c338885f"
   name = "github.com/deislabs/porter"
   packages = [
     "pkg/context",
+    "pkg/mixin",
+    "pkg/porter/version",
+    "pkg/printer",
     "pkg/test",
   ]
   pruneopts = "NUT"
-  revision = "51221b2438ae7490880982840cc5003a16b8243e"
+  revision = "72dd5df11c28ceb3a0599674556ff728df333118"
+  version = "v0.14.1-beta.2"
 
 [[projects]]
   digest = "1:7a6852b35eb5bbc184561443762d225116ae630c26a7c4d90546619f1e7d2ad2"
@@ -417,6 +420,9 @@
     "github.com/Azure/go-autorest/autorest/azure",
     "github.com/Masterminds/sprig",
     "github.com/deislabs/porter/pkg/context",
+    "github.com/deislabs/porter/pkg/mixin",
+    "github.com/deislabs/porter/pkg/porter/version",
+    "github.com/deislabs/porter/pkg/printer",
     "github.com/gobuffalo/packr/v2",
     "github.com/gobuffalo/packr/v2/file/resolver",
     "github.com/kelseyhightower/envconfig",
