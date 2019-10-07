@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/deislabs/porter-azure/pkg/azure"
+	"github.com/deislabs/porter-arm/pkg/arm"
 	"github.com/spf13/cobra"
 )
 
-func buildBuildCommand(m *azure.Mixin) *cobra.Command {
+func buildBuildCommand(m *arm.Mixin) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "build",
 		Short: "Generate Dockerfile lines for the bundle invocation image",

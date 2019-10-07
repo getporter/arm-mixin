@@ -1,15 +1,12 @@
 package main
 
 import (
-	"github.com/deislabs/porter-azure/pkg/azure"
-	"github.com/deislabs/porter/pkg/porter/version"
+	"github.com/deislabs/porter-arm/pkg/arm"
 	"github.com/spf13/cobra"
 )
 
-func buildVersionCommand(m *azure.Mixin) *cobra.Command {
-	opts := version.Options{}
-
-	cmd := &cobra.Command{
+func buildVersionCommand(m *arm.Mixin) *cobra.Command {
+	return &cobra.Command{
 		Use:   "version",
 		Short: "Print the mixin version",
 		PreRunE: func(cmd *cobra.Command, args []string) error {

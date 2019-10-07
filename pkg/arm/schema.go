@@ -1,4 +1,4 @@
-package azure
+package arm
 
 import (
 	"fmt"
@@ -20,7 +20,7 @@ func (m *Mixin) PrintSchema() error {
 func (m *Mixin) GetSchema() (string, error) {
 	t := packr.New("schema", "./schema")
 
-	b, err := t.Find("azure.json")
+	b, err := t.Find("arm.json")
 	if err != nil {
 		return "", err
 	}

@@ -1,4 +1,4 @@
-package azure
+package arm
 
 import (
 	"io/ioutil"
@@ -14,7 +14,7 @@ func TestMixin_GetSchema(t *testing.T) {
 	gotSchema, err := m.GetSchema()
 	require.NoError(t, err)
 
-	wantSchema, err := ioutil.ReadFile("schema/azure.json")
+	wantSchema, err := ioutil.ReadFile("schema/arm.json")
 	require.NoError(t, err)
 
 	assert.Equal(t, string(wantSchema), gotSchema)

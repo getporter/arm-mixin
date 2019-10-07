@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/deislabs/porter-azure/pkg/azure"
+	"github.com/deislabs/porter-arm/pkg/arm"
 	"github.com/spf13/cobra"
 )
 
@@ -9,7 +9,7 @@ var (
 	commandFile string
 )
 
-func buildInstallCommand(m *azure.Mixin) *cobra.Command {
+func buildInstallCommand(m *arm.Mixin) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "install",
 		Short: "Execute the install functionality of this mixin",

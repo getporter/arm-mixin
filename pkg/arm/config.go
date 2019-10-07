@@ -1,4 +1,4 @@
-package azure
+package arm
 
 import (
 	"github.com/Azure/go-autorest/autorest/azure"

@@ -1,4 +1,4 @@
-package azure
+package arm
 
 import (
 	"fmt"
@@ -13,7 +13,7 @@ type InstallAction struct {
 }
 
 type InstallStep struct {
-	InstallArguments `yaml:"azure"`
+	InstallArguments `yaml:"arm"`
 }
 
 type InstallArguments struct {
