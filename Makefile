@@ -1,4 +1,4 @@
-MIXIN = azure
+MIXIN = arm
 PKG = github.com/deislabs/porter-$(MIXIN)
 SHELL = bash
 
