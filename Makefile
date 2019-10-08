@@ -1,4 +1,4 @@
-MIXIN = azure
+MIXIN = arm
 PKG = github.com/deislabs/porter-$(MIXIN)
 SHELL = bash
 
@@ -67,9 +67,9 @@ test-unit: build
 	go test ./...
 
 test-templates: jsonpp
-	@for template in $$(ls pkg/azure/arm/templates); do \
+	@for template in $$(ls pkg/arm/arm/templates); do \
 		echo "ensuring valid json: $$template" ; \
-		cat pkg/azure/arm/templates/$$template | json_pp > /dev/null ; \
+		cat pkg/arm/arm/templates/$$template | json_pp > /dev/null ; \
 	done
 
 HAS_JSONPP := $(shell command -v jsonpp)

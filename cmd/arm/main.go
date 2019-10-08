@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/deislabs/porter-azure/pkg/azure"
+	"github.com/deislabs/porter-arm/pkg/arm"
 	"github.com/spf13/cobra"
 )
 
@@ -22,14 +22,14 @@ func main() {
 }
 
 func buildRootCommand(in io.Reader) (*cobra.Command, error) {
-	m, err := azure.New()
+	m, err := arm.New()
 	if err != nil {
 		return nil, err
 	}
 	m.In = in
 	cmd := &cobra.Command{
-		Use:  "azure",
-		Long: "An Azure mixin for porter 👩🏽‍✈️",
+		Use:  "arm",
+		Long: "An ARM mixin for porter 👩🏽‍✈️",
 		PersistentPreRun: func(cmd *cobra.Command, args []string) {
 			// Enable swapping out stdout/stderr for testing
 			m.Out = cmd.OutOrStdout()

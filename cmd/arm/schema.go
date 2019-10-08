@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/deislabs/porter-azure/pkg/azure"
+	"github.com/deislabs/porter-arm/pkg/arm"
 	"github.com/spf13/cobra"
 )
 
-func buildSchemaCommand(m *azure.Mixin) *cobra.Command {
+func buildSchemaCommand(m *arm.Mixin) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "schema",
 		Short: "Print the json schema for the mixin",

@@ -1,5 +1,5 @@
 //go:generate packr2
-package azure
+package arm
 
 import (
 	"bufio"
@@ -8,8 +8,8 @@ import (
 
 	resourcesSDK "github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2017-05-10/resources"
 
-	"github.com/deislabs/porter-azure/pkg/azure/arm"
-	"github.com/deislabs/porter-azure/pkg/azure/auth"
+	"github.com/deislabs/porter-arm/pkg/arm/arm"
+	"github.com/deislabs/porter-arm/pkg/arm/auth"
 	"github.com/deislabs/porter/pkg/context"
 
 	"github.com/pkg/errors"

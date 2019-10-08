@@ -1,4 +1,4 @@
-azure:
+arm:
   description: "Create Azure MySQL"
   type: mysql
   name: mysql-azure-porter-demo

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/deislabs/porter-azure/pkg/azure"
+	"github.com/deislabs/porter-arm/pkg/arm"
 	"github.com/spf13/cobra"
 )
 
-func buildUninstallCommand(m *azure.Mixin) *cobra.Command {
+func buildUninstallCommand(m *arm.Mixin) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "uninstall",
 		Short: "Execute the uninstall functionality of this mixin",

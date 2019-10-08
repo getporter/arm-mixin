@@ -1,4 +1,4 @@
-package azure
+package arm
 
 type Step struct {
 	Description string        `yaml:"description"`
