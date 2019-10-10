@@ -19,7 +19,6 @@ type InstallStep struct {
 type InstallArguments struct {
 	Step `yaml:",inline"`
 
-	Type          string                 `yaml:"type"`
 	Template      string                 `yaml:"template"`
 	Name          string                 `yaml:"name"`
 	ResourceGroup string                 `yaml:"resourceGroup"`
@@ -48,7 +47,7 @@ func (m *Mixin) Install() error {
 		return err
 	}
 	// Get the Template based on the arguments (type)
-	t, err := deployer.FindTemplate(step.Type, step.Template)
+	t, err := deployer.FindTemplate(step.Template)
 	if err != nil {
 		return err
 	}

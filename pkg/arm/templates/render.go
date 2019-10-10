@@ -1,4 +1,4 @@
-package arm
+package templates
 
 import (
 	"bytes"
