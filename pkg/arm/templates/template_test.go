@@ -12,7 +12,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func newTestDeplyer(ctx *context.TestContext) Deployer {
+func newTestDeployer(ctx *context.TestContext) Deployer {
 	env, _ := azure.EnvironmentFromName("")
 	authorizer, _ := auth.GetBearerTokenAuthorizer(env, "", "", "")
 	resourceDeploymentsClient := resourcesSDK.NewDeploymentsClientWithBaseURI(
@@ -34,7 +34,7 @@ func TestLoadTemplate(t *testing.T) {
 	b, err := ioutil.ReadFile("testdata/test-arm.json")
 	require.NoError(t, err)
 	ctx.AddTestFile("testdata/test-arm.json", "/cnab/app/arm/aci.json")
-	d := newTestDeplyer(ctx)
+	d := newTestDeployer(ctx)
 	tpl, err := d.FindTemplate("arm/aci.json")
 	assert.NoError(t, err)
 	assert.Equal(t, string(b), string(tpl))
