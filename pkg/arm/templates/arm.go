@@ -1,4 +1,4 @@
-package arm
+package templates
 
 import (
 	"context"
@@ -27,7 +27,7 @@ const (
 // Deployer is an interface to be implemented by any component capable of
 // deploying resource to Azure using an ARM template
 type Deployer interface {
-	FindTemplate(kind, template string) ([]byte, error)
+	FindTemplate(template string) ([]byte, error)
 	Deploy(
 		deploymentName string,
 		resourceGroupName string,

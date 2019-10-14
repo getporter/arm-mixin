@@ -13,9 +13,6 @@
             "name": {
               "type": "string"
             },
-            "type": {
-              "type": "string"
-            },
             "template": {
               "type": "string"
             },
@@ -33,7 +30,6 @@
           "required": [
             "name",
             "description",
-            "type",
             "template"
           ]
         }
