@@ -2,6 +2,20 @@
 
 
 [[projects]]
+  digest = "1:7b3f588341ce5d615d7d6381efbeec91d41ab9d8a31e83a16ab236b123413de4"
+  name = "get.porter.sh/porter"
+  packages = [
+    "pkg/context",
+    "pkg/mixin",
+    "pkg/porter/version",
+    "pkg/printer",
+    "pkg/test",
+  ]
+  pruneopts = "NUT"
+  revision = "8f3e429db9a2842ddca2570b1eb559564331a6e0"
+  version = "v0.22.0-beta.1"
+
+[[projects]]
   digest = "1:5ca563e4d2c45b84db7eb3ecf1a96cf28d102d5703a1c643aaa50faed81c6e06"
   name = "github.com/Azure/azure-sdk-for-go"
   packages = [
@@ -68,20 +82,6 @@
   pruneopts = "NUT"
   revision = "8991bc29aa16c548c550c7ff78260e27b9ab7c73"
   version = "v1.1.1"
-
-[[projects]]
-  digest = "1:5dbeee38ba124d233693f4d3b0e74fbb6df785bbff42c22bc1b44fb1c338885f"
-  name = "github.com/deislabs/porter"
-  packages = [
-    "pkg/context",
-    "pkg/mixin",
-    "pkg/porter/version",
-    "pkg/printer",
-    "pkg/test",
-  ]
-  pruneopts = "NUT"
-  revision = "72dd5df11c28ceb3a0599674556ff728df333118"
-  version = "v0.14.1-beta.2"
 
 [[projects]]
   digest = "1:7a6852b35eb5bbc184561443762d225116ae630c26a7c4d90546619f1e7d2ad2"
@@ -414,15 +414,15 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "get.porter.sh/porter/pkg/context",
+    "get.porter.sh/porter/pkg/mixin",
+    "get.porter.sh/porter/pkg/porter/version",
+    "get.porter.sh/porter/pkg/printer",
     "github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2017-05-10/resources",
     "github.com/Azure/go-autorest/autorest",
     "github.com/Azure/go-autorest/autorest/adal",
     "github.com/Azure/go-autorest/autorest/azure",
     "github.com/Masterminds/sprig",
-    "github.com/deislabs/porter/pkg/context",
-    "github.com/deislabs/porter/pkg/mixin",
-    "github.com/deislabs/porter/pkg/porter/version",
-    "github.com/deislabs/porter/pkg/printer",
     "github.com/gobuffalo/packr/v2",
     "github.com/gobuffalo/packr/v2/file/resolver",
     "github.com/kelseyhightower/envconfig",
