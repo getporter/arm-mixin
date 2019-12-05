@@ -1,14 +1,15 @@
 package templates
 
 import (
-	"github.com/stretchr/testify/require"
 	"io/ioutil"
 	"testing"
 
+	"github.com/stretchr/testify/require"
+
+	"get.porter.sh/mixin/arm/pkg/arm/auth"
+	"get.porter.sh/porter/pkg/context"
 	resourcesSDK "github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2017-05-10/resources"
 	"github.com/Azure/go-autorest/autorest/azure"
-	"github.com/deislabs/porter-arm/pkg/arm/auth"
-	"github.com/deislabs/porter/pkg/context"
 	"github.com/stretchr/testify/assert"
 )
 
