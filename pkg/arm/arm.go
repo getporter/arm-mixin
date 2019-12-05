@@ -8,9 +8,9 @@ import (
 
 	resourcesSDK "github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2017-05-10/resources"
 
-	"github.com/deislabs/porter-arm/pkg/arm/auth"
-	arm "github.com/deislabs/porter-arm/pkg/arm/templates"
-	"github.com/deislabs/porter/pkg/context"
+	"get.porter.sh/mixin/arm/pkg/arm/auth"
+	arm "get.porter.sh/mixin/arm/pkg/arm/templates"
+	"get.porter.sh/porter/pkg/context"
 
 	"github.com/pkg/errors"
 )

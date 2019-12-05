@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/deislabs/porter-arm/pkg/arm"
+	"get.porter.sh/mixin/arm/pkg/arm"
 	"github.com/spf13/cobra"
 )
 
