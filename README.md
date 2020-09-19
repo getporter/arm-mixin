@@ -1,6 +1,6 @@
 # Azure Resource Manager (ARM) Mixin for Porter
 
-[![Build Status](https://dev.azure.com/getporter/porter/_apis/build/status/kubernetes-mixin?branchName=main)](https://dev.azure.com/getporter/porter/_build/latest?definitionId=16&branchName=main)
+[![Build Status](https://dev.azure.com/getporter/porter/_apis/build/status/arm-mixin?branchName=main)](https://dev.azure.com/getporter/porter/_build/latest?definitionId=16&branchName=main)
 
 <img src="https://porter.sh/images/mixins/azure.png" align="right" width="150px"/>
 
