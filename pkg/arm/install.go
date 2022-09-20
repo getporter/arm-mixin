@@ -1,6 +1,7 @@
 package arm
 
 import (
+	"context"
 	"fmt"
 	"strings"
 
@@ -25,7 +26,7 @@ type InstallArguments struct {
 	Parameters    map[string]interface{} `yaml:"parameters"`
 }
 
-func (m *Mixin) Install() error {
+func (m *Mixin) Install(ctx context.Context) error {
 	payload, err := m.getPayloadData()
 	if err != nil {
 		return err

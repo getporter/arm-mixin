@@ -10,22 +10,22 @@ import (
 
 	"get.porter.sh/mixin/arm/pkg/arm/auth"
 	arm "get.porter.sh/mixin/arm/pkg/arm/templates"
-	"get.porter.sh/porter/pkg/context"
+	"get.porter.sh/porter/pkg/runtime"
 
 	"github.com/pkg/errors"
 )
 
 type Mixin struct {
-	*context.Context
+	runtime.RuntimeConfig
 	cfg Config
 	//also add the azure clients here
 }
 
-// New azure mixin client, initialized with useful defaults.
-func New() (*Mixin, error) {
+// New arm mixin client, initialized with useful defaults.
+func New() *Mixin {
 	return &Mixin{
-		Context: context.New(),
-	}, nil
+		RuntimeConfig: runtime.NewConfig(),
+	}
 
 }
 

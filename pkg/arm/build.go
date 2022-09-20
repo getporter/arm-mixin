@@ -1,8 +1,8 @@
 package arm
 
-import (
+import "context"
+
 // "fmt"
-)
 
 // const dockerfileLines = `RUN apt-get update && \
 // apt-get install gnupg apt-transport-https lsb-release software-properties-common -y && \
@@ -16,7 +16,7 @@ import (
 
 // Build will generate the necessary Dockerfile lines
 // for an invocation image using this mixin
-func (m *Mixin) Build() error {
+func (m *Mixin) Build(ctx context.Context) error {
 	//fmt.Fprintf(m.Out, dockerfileLines)
 	return nil
 }
