@@ -17,7 +17,7 @@ func buildInstallCommand(m *arm.Mixin) *cobra.Command {
 			return m.LoadConfigFromEnvironment()
 		},
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return m.Install()
+			return m.Install(cmd.Context())
 		},
 	}
 	return cmd

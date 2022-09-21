@@ -1,17 +1,53 @@
-// +build mage
+//go:build mage
 
 package main
 
 import (
-	// mage:import
-	"get.porter.sh/porter/mage/releases"
+	"get.porter.sh/magefiles/mixins"
 )
 
-// We are migrating to mage, but for now keep using make as the main build script interface.
+const (
+	mixinName    = "arm"
+	mixinPackage = "get.porter.sh/mixin/arm"
+	mixinBin     = "bin/mixins/" + mixinName
+)
 
-// Publish the cross-compiled binaries.
-func Publish(mixin string, version string, permalink string) {
-	releases.PrepareMixinForPublish(mixin, version, permalink)
-	releases.PublishMixin(mixin, version, permalink)
-	releases.PublishMixinFeed(mixin, version)
+var magefile = mixins.NewMagefile(mixinPackage, mixinName, mixinBin)
+
+func ConfigureAgent() {
+	magefile.ConfigureAgent()
+}
+
+// Build the mixin
+func Build() {
+	magefile.Build()
+}
+
+// Cross-compile the mixin before a release
+func XBuildAll() {
+	magefile.XBuildAll()
+}
+
+// Run unit tests
+func TestUnit() {
+	magefile.TestUnit()
+}
+
+func Test() {
+	magefile.Test()
+}
+
+// Publish the mixin to github
+func Publish() {
+	magefile.Publish()
+}
+
+// Install the mixin
+func Install() {
+	magefile.Install()
+}
+
+// Remove generated build files
+func Clean() {
+	magefile.Clean()
 }

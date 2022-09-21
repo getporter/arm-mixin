@@ -1,6 +1,7 @@
 package arm
 
 import (
+	"context"
 	"fmt"
 	"strings"
 
@@ -25,7 +26,7 @@ type InstallArguments struct {
 	Parameters    map[string]interface{} `yaml:"parameters"`
 }
 
-func (m *Mixin) Install() error {
+func (m *Mixin) Install(ctx context.Context) error {
 	payload, err := m.getPayloadData()
 	if err != nil {
 		return err
@@ -58,7 +59,7 @@ func (m *Mixin) Install() error {
 		step.ResourceGroup,
 		step.Parameters["location"].(string),
 		t,
-		step.Parameters, //arm params
+		step.Parameters, // arm params
 	)
 	if err != nil {
 		return err
@@ -78,7 +79,7 @@ func (m *Mixin) Install() error {
 			return fmt.Errorf("couldn't find output key")
 		}
 
-		err := m.Context.WriteMixinOutputToFile(output.Name, []byte(fmt.Sprintf("%v", v)))
+		err := m.WriteMixinOutputToFile(output.Name, []byte(fmt.Sprintf("%v", v)))
 		if err != nil {
 			return errors.Wrapf(err, "unable to write output '%s'", output.Name)
 		}

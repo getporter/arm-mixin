@@ -11,7 +11,7 @@ import (
 	resourcesSDK "github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2017-05-10/resources" // nolint: lll
 	"github.com/Azure/go-autorest/autorest"
 
-	porterCtx "get.porter.sh/porter/pkg/context"
+	"get.porter.sh/porter/pkg/portercontext"
 )
 
 type deploymentStatus string
@@ -47,14 +47,14 @@ type Deployer interface {
 
 // deployer is an ARM-based implementation of the Deployer interface
 type deployer struct {
-	context           *porterCtx.Context
+	context           *portercontext.Context
 	groupsClient      resourcesSDK.GroupsClient
 	deploymentsClient resourcesSDK.DeploymentsClient
 }
 
 // NewDeployer returns a new ARM-based implementation of the Deployer interface
 func NewDeployer(
-	context *porterCtx.Context,
+	context *portercontext.Context,
 	groupsClient resourcesSDK.GroupsClient,
 	deploymentsClient resourcesSDK.DeploymentsClient,
 ) Deployer {

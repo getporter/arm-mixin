@@ -1,5 +1,7 @@
 package arm
 
-func (m *Mixin) Uninstall() error {
+import "context"
+
+func (m *Mixin) Uninstall(ctx context.Context) error {
 	return nil
 }
