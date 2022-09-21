@@ -21,39 +21,33 @@ func ConfigureAgent() {
 // Build the mixin
 func Build() {
 	magefile.Build()
-	magefile.Build()
 }
 
 // Cross-compile the mixin before a release
 func XBuildAll() {
-	magefile.XBuildAll()
 	magefile.XBuildAll()
 }
 
 // Run unit tests
 func TestUnit() {
 	magefile.TestUnit()
-	magefile.TestUnit()
 }
+
 func Test() {
-	magefile.Test()
 	magefile.Test()
 }
 
 // Publish the mixin to github
 func Publish() {
 	magefile.Publish()
-	magefile.Publish()
 }
 
 // Install the mixin
 func Install() {
 	magefile.Install()
-	magefile.Install()
 }
 
 // Remove generated build files
 func Clean() {
-	magefile.Clean()
 	magefile.Clean()
 }

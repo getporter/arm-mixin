@@ -59,7 +59,7 @@ func (m *Mixin) Install(ctx context.Context) error {
 		step.ResourceGroup,
 		step.Parameters["location"].(string),
 		t,
-		step.Parameters, //arm params
+		step.Parameters, // arm params
 	)
 	if err != nil {
 		return err
@@ -79,7 +79,7 @@ func (m *Mixin) Install(ctx context.Context) error {
 			return fmt.Errorf("couldn't find output key")
 		}
 
-		err := m.Context.WriteMixinOutputToFile(output.Name, []byte(fmt.Sprintf("%v", v)))
+		err := m.WriteMixinOutputToFile(output.Name, []byte(fmt.Sprintf("%v", v)))
 		if err != nil {
 			return errors.Wrapf(err, "unable to write output '%s'", output.Name)
 		}

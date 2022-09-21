@@ -2,8 +2,6 @@ package arm
 
 import "context"
 
-// "fmt"
-
 // const dockerfileLines = `RUN apt-get update && \
 // apt-get install gnupg apt-transport-https lsb-release software-properties-common -y && \
 // echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ stretch main" | \
@@ -17,6 +15,6 @@ import "context"
 // Build will generate the necessary Dockerfile lines
 // for an invocation image using this mixin
 func (m *Mixin) Build(ctx context.Context) error {
-	//fmt.Fprintf(m.Out, dockerfileLines)
+	// fmt.Fprintf(m.Out, dockerfileLines)
 	return nil
 }
