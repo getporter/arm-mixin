@@ -10,7 +10,7 @@ go 1.19
 replace github.com/spf13/viper => github.com/getporter/viper v1.7.1-porter.2.0.20210514172839-3ea827168363
 
 require (
-	get.porter.sh/magefiles v0.5.0
+	get.porter.sh/magefiles v0.5.1
 	get.porter.sh/porter v1.0.9
 	github.com/Azure/azure-sdk-for-go v42.3.0+incompatible
 	github.com/Azure/go-autorest/autorest v0.11.24
