@@ -42,6 +42,12 @@ func Publish() {
 	magefile.Publish()
 }
 
+// TestPublish tries out publish locally, with your github forks
+// Assumes that you forked and kept the repository name unchanged.
+func TestPublish(username string) {
+	magefile.TestPublish(username)
+}
+
 // Install the mixin
 func Install() {
 	magefile.Install()
