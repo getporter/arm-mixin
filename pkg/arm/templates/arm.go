@@ -462,6 +462,10 @@ func (d *deployer) pollUntilComplete(
 func getOutputs(
 	deployment *resourcesSDK.DeploymentExtended,
 ) (map[string]interface{}, error) {
+	// Check if deployment output is nil as "outputs" section/element is optional in ARM template.
+	if deployment.Properties.Outputs == nil {
+		return map[string]interface{}{}, nil
+	}
 	outputs, ok := deployment.Properties.Outputs.(map[string]interface{})
 	if !ok {
 		return nil, errors.New("error decoding deployment outputs")
