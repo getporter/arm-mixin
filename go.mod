@@ -2,8 +2,6 @@ module get.porter.sh/mixin/arm
 
 go 1.21
 
-toolchain go1.21.3
-
 // These are replace directives copied from porter
 // When you use a newer version of Porter, if you run into trouble with go mod tidy
 // Copy any additional replace directives from Porter's go.mod file
@@ -14,7 +12,7 @@ replace github.com/spf13/viper => github.com/getporter/viper v1.7.1-porter.2.0.2
 require (
 	get.porter.sh/magefiles v0.6.8
 	get.porter.sh/porter v1.1.0
-	github.com/Azure/azure-sdk-for-go v42.3.0+incompatible
+	github.com/Azure/azure-sdk-for-go v68.0.0+incompatible
 	github.com/Azure/go-autorest/autorest v0.11.24
 	github.com/Azure/go-autorest/autorest/adal v0.9.18
 	github.com/Masterminds/sprig v2.22.0+incompatible
