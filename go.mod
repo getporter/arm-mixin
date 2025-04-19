@@ -13,8 +13,8 @@ require (
 	get.porter.sh/magefiles v0.6.8
 	get.porter.sh/porter v1.1.0
 	github.com/Azure/azure-sdk-for-go v68.0.0+incompatible
-	github.com/Azure/go-autorest/autorest v0.11.24
-	github.com/Azure/go-autorest/autorest/adal v0.9.18
+	github.com/Azure/go-autorest/autorest v0.11.30
+	github.com/Azure/go-autorest/autorest/adal v0.9.22
 	github.com/Masterminds/sprig v2.22.0+incompatible
 	github.com/gobuffalo/packr/v2 v2.8.3
 	github.com/kelseyhightower/envconfig v1.4.0
