@@ -12,7 +12,7 @@ func (m *Mixin) PrintSchema() error {
 		return err
 	}
 
-	fmt.Fprintf(m.Out, schema)
+	fmt.Fprint(m.Out, schema)
 
 	return nil
 }
